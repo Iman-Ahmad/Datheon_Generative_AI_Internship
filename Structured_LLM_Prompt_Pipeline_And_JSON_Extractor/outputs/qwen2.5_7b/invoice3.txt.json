@@ -1,0 +1,26 @@
+{
+  "vendor": "TrailPeak Outdoor Gear Inc.",
+  "invoice_number": "88-B",
+  "date": "2025-10-03",
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Alpine tent (2-person)",
+      "quantity": 2.0,
+      "unit_price": 1250.0
+    },
+    {
+      "description": "Trekking poles (pair)",
+      "quantity": 4.0,
+      "unit_price": 39.9
+    },
+    {
+      "description": "Shipping & handling",
+      "quantity": 1.0,
+      "unit_price": 45.0
+    }
+  ],
+  "discount": 0.0,
+  "tax": 0.0,
+  "total": 2704.6
+}

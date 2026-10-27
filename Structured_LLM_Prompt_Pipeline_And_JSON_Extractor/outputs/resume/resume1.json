@@ -1,0 +1,28 @@
+{
+  "full_name": "Alex Johnson",
+  "email": "alex.johnson@mail.example",
+  "phone": null,
+  "location": "Berlin",
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "Docker",
+    "Kubernetes",
+    "PostgreSQL"
+  ],
+  "experience": [
+    {
+      "company": "FinCore GmbH",
+      "job_title": "Backend Developer",
+      "start_date": "2021",
+      "end_date": "present"
+    }
+  ],
+  "education": [
+    {
+      "institution": "TU Berlin",
+      "degree": "MSc Computer Science",
+      "year": "2018"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "full_name": "Sofia Martinez",
+  "email": "sofia.martinez@example.org",
+  "phone": "+34 612 345 678",
+  "location": "Madrid, Spain",
+  "skills": [
+    "Python",
+    "pandas",
+    "scikit-learn",
+    "PyTorch",
+    "SQL",
+    "Airflow",
+    "AWS"
+  ],
+  "experience": [
+    {
+      "company": "Solaris Energy",
+      "job_title": "Senior Data Scientist",
+      "start_date": "2023-01",
+      "end_date": "present"
+    },
+    {
+      "company": "Quantia Analytics",
+      "job_title": "Data Scientist",
+      "start_date": "2019-06",
+      "end_date": "2022-12"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universitat Politècnica de Catalunya",
+      "degree": "M.Sc. Data Science",
+      "year": "2019"
+    },
+    {
+      "institution": "Universidad de Sevilla",
+      "degree": "B.Sc. Mathematics",
+      "year": "2017"
+    }
+  ]
+}

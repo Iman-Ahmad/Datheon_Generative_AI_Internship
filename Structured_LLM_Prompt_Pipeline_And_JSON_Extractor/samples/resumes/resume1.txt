@@ -1,0 +1,8 @@
+Alex Johnson -- Senior Backend Dev
+alex.johnson@mail.example | Berlin
+Skills: Java; Spring Boot, Docker / Kubernetes, PostgreSQL
+
+Work:
+* 2021 - now: Backend Developer @ FinCore GmbH
+* Sep 2018 to Dec 2020: Software Engineer @ Brightway
+Studied: MSc Computer Science, TU Berlin (2016-2018)

@@ -1,0 +1,16 @@
+{
+  "vendor": "Brightline Supplies Ltd.",
+  "invoice_number": "2291",
+  "date": "2026-03-04",
+  "currency": "EUR",
+  "line_items": [
+    {
+      "description": "Office chairs",
+      "quantity": 3.0,
+      "unit_price": 85.0
+    }
+  ],
+  "discount": 0.0,
+  "tax": 118.65,
+  "total": 373.65
+}

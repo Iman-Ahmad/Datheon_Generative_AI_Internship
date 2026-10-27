@@ -1,0 +1,13 @@
+TAX INVOICE
+Harbor & Finch Studio, 14 Quay Lane, Bristol
+Inv No: HF/2026/0117      Issued: 17/02/2026
+
+Client: Pellman Bakery Ltd
+
+ Logo design package ........................ 1 x £450.00
+ Business card printing (200 pcs) ........... 2 x £35.50 = £71.00
+
+ Subtotal                                     £521.00
+ Loyalty discount (10%)                       -£52.10
+ VAT 20%                                      £93.78
+ TOTAL DUE                                    £562.68

@@ -1,0 +1,21 @@
+{
+  "vendor": "Harbor & Finch Studio",
+  "invoice_number": "HF/2026/0117",
+  "date": "2026-02-17",
+  "currency": "GBP",
+  "line_items": [
+    {
+      "description": "Logo design package",
+      "quantity": 1.0,
+      "unit_price": 450.0
+    },
+    {
+      "description": "Business card printing (200 pcs)",
+      "quantity": 2.0,
+      "unit_price": 35.5
+    }
+  ],
+  "discount": 52.1,
+  "tax": 93.78,
+  "total": 562.68
+}

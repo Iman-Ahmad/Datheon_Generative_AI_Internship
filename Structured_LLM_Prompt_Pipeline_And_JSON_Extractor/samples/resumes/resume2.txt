@@ -1,0 +1,22 @@
+SOFIA MARTINEZ
+Data Scientist
+Madrid, Spain · sofia.martinez@example.org · +34 612 345 678 · linkedin.com/in/sofiamartinez
+
+PROFESSIONAL SUMMARY
+Data scientist with 6 years of experience in forecasting and NLP.
+
+WORK HISTORY
+Senior Data Scientist — Solaris Energy, Madrid
+January 2023 – Present
+• Led a team of 4 building demand-forecasting models
+
+Data Scientist — Quantia Analytics, Barcelona
+June 2019 – December 2022
+• Built an NLP pipeline for customer feedback analysis
+
+EDUCATION
+M.Sc. Data Science, Universitat Politècnica de Catalunya — 2019
+B.Sc. Mathematics, Universidad de Sevilla — 2017
+
+TECHNICAL SKILLS
+Python (pandas, scikit-learn, PyTorch), SQL, Airflow, AWS

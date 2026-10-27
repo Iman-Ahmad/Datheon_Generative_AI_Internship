@@ -1,0 +1,34 @@
+{
+  "full_name": "dmitri volkov",
+  "email": null,
+  "phone": null,
+  "location": "Tbilisi, Georgia",
+  "skills": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node.js"
+  ],
+  "experience": [
+    {
+      "company": "PixelForge",
+      "job_title": "junior frontend developer",
+      "start_date": "2020",
+      "end_date": "2022"
+    },
+    {
+      "company": "Freelance",
+      "job_title": "web dev",
+      "start_date": "2022",
+      "end_date": "present"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Tbilisi State University",
+      "degree": "BA in Business Administration",
+      "year": "2019"
+    }
+  ]
+}

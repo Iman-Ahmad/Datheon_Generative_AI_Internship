@@ -1,0 +1,12 @@
+RECHNUNG / INVOICE
+Nr. 2026-0031
+Datum: 05.01.2026
+Aussteller: Kowalski & Sohn Elektrotechnik GmbH
+
+Pos  Beschreibung                    Menge  Einzelpreis   Gesamt
+1    LED-Panel 60x60                  10     24,90 €       249,00 €
+2    Montagearbeiten (Stunden)        6      55,00 €       330,00 €
+
+Zwischensumme                                               579,00 €
+MwSt. 19%                                                   110,01 €
+Gesamtbetrag                                                689,01 €

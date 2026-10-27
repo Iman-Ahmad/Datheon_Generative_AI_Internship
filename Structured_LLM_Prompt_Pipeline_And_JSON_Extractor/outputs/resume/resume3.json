@@ -1,0 +1,28 @@
+{
+  "full_name": "Dmitri Volkov",
+  "email": null,
+  "phone": null,
+  "location": "Tbilisi, Georgia",
+  "skills": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node.js"
+  ],
+  "experience": [
+    {
+      "company": "Freelance",
+      "job_title": "Freelance Web Dev",
+      "start_date": "2022",
+      "end_date": "present"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Tbilisi State University",
+      "degree": "BA in Business Administration",
+      "year": "2019"
+    }
+  ]
+}

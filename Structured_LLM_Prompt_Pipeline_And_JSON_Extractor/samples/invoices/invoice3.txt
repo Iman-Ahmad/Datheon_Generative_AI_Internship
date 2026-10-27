@@ -1,0 +1,12 @@
+Invoice 88-B
+Date: October 3, 2025
+Seller: TrailPeak Outdoor Gear Inc.
+
+Item                     Qty   Price       Amount
+Alpine tent (2-person)    2    $1,250.00   $2,500.00
+Trekking poles (pair)     4    $39.90      $159.60
+Shipping & handling       1    $45.00      $45.00
+
+Subtotal: $2,704.60
+Tax: $0.00  (tax exempt)
+Total: $2,704.60 USD

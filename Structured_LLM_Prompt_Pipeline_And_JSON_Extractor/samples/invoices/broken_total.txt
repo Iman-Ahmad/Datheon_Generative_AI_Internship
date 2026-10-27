@@ -1,0 +1,5 @@
+Invoice 5001 - Test Co.
+Date: 2026-01-10
+2 x Widget @ 10.00 = 20.00
+Tax: 2.00
+Total: 99.00 USD

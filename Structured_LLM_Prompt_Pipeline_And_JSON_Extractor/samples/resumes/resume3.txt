@@ -1,0 +1,6 @@
+dmitri volkov
+
+based in Tbilisi, Georgia
+freelance web dev (since 2022). before that worked at PixelForge as junior frontend developer, 2020-2022.
+i know HTML, CSS, JavaScript, React and some Node.js
+studied at Tbilisi State University, BA in Business Administration, finished 2019
