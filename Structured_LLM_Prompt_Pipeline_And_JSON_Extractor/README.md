@@ -12,6 +12,10 @@ LLMs return *plausible* text, not guaranteed-correct data. During development th
 - a model that **invented a total** to make the arithmetic work,
 - a model that read "200 pcs" in a description as the quantity,
 - a model that returned `email: null` when the email was in the text.
+- a model that **copied an employer from a few-shot example** into a CV that listed no jobs
+  (example leakage), caught because every company name must appear in the source text,
+- a model that put a **grade ("75.09") and a language level ("B1") into the graduation-year field**,
+- a model that wrote the **text** "null" instead of a real null.
 
 Each failure is now caught by a validator and sent back to the model for correction.
 
@@ -114,6 +118,10 @@ misread a pack size as a quantity on `invoice2`.
 - Small local models can still miss items on unusual layouts; larger models are more reliable.
 - The sample set is small and synthetic; it is not a statistical benchmark.
 - Supports two document types (invoice, resume). New types need a schema and a prompt config.
+- a model that **copied an employer from a few-shot example** into a CV that listed no jobs
+  (example leakage), caught because every company name must appear in the source text,
+- a model that put a **grade ("75.09") and a language level ("B1") into the graduation-year field**,
+- a model that wrote the **text** "null" instead of a real null.
 
 ## Project structure
 
@@ -126,3 +134,12 @@ run_samples.py batch runner and model comparison
 samples/       fake invoices and resumes (no real personal data)
 outputs/       saved results per model
 ```
+
+## Web UI (Streamlit)
+
+```bash
+streamlit run app.py
+```
+
+Choose a document type, pick a sample, upload a file or paste text, and view the validated result
+as tables, with a JSON download and a log of any validation retries.

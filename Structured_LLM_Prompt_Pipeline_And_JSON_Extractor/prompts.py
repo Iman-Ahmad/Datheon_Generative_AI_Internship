@@ -81,10 +81,16 @@ Rules:
 - Dates: YYYY-MM if the month is known, otherwise YYYY. Use "present" for current jobs
   ("now", "current", "ongoing", "until today").
 - Include EVERY job and EVERY degree mentioned. Do not stop after the first one.
+- experience contains only jobs actually written in the text. Projects, certificates, courses,
+  competitions and hobbies are NOT jobs. If the text lists no jobs, return an empty list.
+  Never copy jobs from the examples.
 - Education year is the graduation (END) year as 4 digits: "2016-2018" becomes "2018".
+  If a degree is still in progress (for example "2025 -") or no year is written, use null.
+  Grades (like 5A or 75.09) and language levels (like B1) are NOT years.
+- Use a real JSON null, never the text "null".
 - For self-employed or freelance work, use "Freelance" as the company.
 - If no education is mentioned, return an empty list.
-- skills: one short skill per list item (split "Docker / Kubernetes" into two items).
+  - skills: one short skill per list item (split "Docker / Kubernetes" into two items).
 - Reply with JSON only.""",
     "examples": [
         (
@@ -141,6 +147,31 @@ JavaScript, React, TypeScript, CSS""",
                 ],
                 "education": [
                     {"institution": "KTH Royal Institute of Technology", "degree": "BSc Software Engineering", "year": "2019"}
+                ],
+            },
+        ),
+                (
+            """LENA FISCHER
+lena.fischer@example.net | Vienna
+
+Education
+2024 -  MSc Data Engineering, TU Wien
+2018 - 2021  BSc Informatics, University of Graz, grade 1.7
+
+Projects
+Weather Dashboard - a web app built with Python and Flask
+
+Skills: Python, SQL, Flask""",
+            {
+                "full_name": "Lena Fischer",
+                "email": "lena.fischer@example.net",
+                "phone": None,
+                "location": "Vienna",
+                "skills": ["Python", "SQL", "Flask"],
+                "experience": [],
+                "education": [
+                    {"institution": "TU Wien", "degree": "MSc Data Engineering", "year": None},
+                    {"institution": "University of Graz", "degree": "BSc Informatics", "year": "2021"},
                 ],
             },
         ),

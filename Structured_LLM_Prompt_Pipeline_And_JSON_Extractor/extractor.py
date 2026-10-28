@@ -17,8 +17,7 @@ MAX_RETRIES = 2
 MAX_OUTPUT_TOKENS = 1500    # a valid result is far shorter; stops endless generation
 SCHEMAS = {"invoice": Invoice, "resume": Resume}
 
-ollama_client = Client(timeout=240)   # give up on one local model call after 4 minutes
-
+ollama_client = Client(timeout=600)   # 10 minutes per call: CPU-only machines are slow on long documents
 
 def call_ollama(model: str, messages: list[dict], schema) -> str:
     try:
@@ -26,7 +25,7 @@ def call_ollama(model: str, messages: list[dict], schema) -> str:
             model=model,
             messages=messages,
             format=schema.model_json_schema(),   # forces the JSON structure
-            options={"temperature": 0, "num_predict": MAX_OUTPUT_TOKENS},
+            options={"temperature": 0, "num_predict": MAX_OUTPUT_TOKENS, "num_ctx": 8192},
         )
     except httpx.TimeoutException:
         raise RuntimeError("The model took too long to answer (timeout). Try a smaller model or a shorter document.")
@@ -78,7 +77,7 @@ def summarize_errors(error: ValidationError) -> str:
 
 
 def extract(text: str, doc_type: str, model: str | None = None, provider: str = "ollama",
-            max_retries: int = MAX_RETRIES) -> BaseModel:
+            max_retries: int = MAX_RETRIES, on_retry=None) -> BaseModel:
     """Turn unstructured text into a validated Pydantic object."""
     schema = SCHEMAS[doc_type]
     model = model or DEFAULT_MODELS[provider]
@@ -94,6 +93,8 @@ def extract(text: str, doc_type: str, model: str | None = None, provider: str = 
         except ValidationError as error:
             last_reason = summarize_errors(error)
             print(f"  Attempt {attempt} failed: {last_reason[:300]}", file=sys.stderr)
+            if on_retry:
+                on_retry(attempt, last_reason)
             messages.append({"role": "assistant", "content": raw})
             messages.append({
                 "role": "user",

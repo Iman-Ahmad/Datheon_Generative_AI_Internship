@@ -4,7 +4,14 @@ from pydantic import BaseModel, Field, ValidationInfo, field_validator, model_va
 
 EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
 PARTIAL_DATE_RE = re.compile(r"\d{4}(-(0[1-9]|1[0-2]))?|present")
+NULL_WORDS = {"", "null", "none", "n/a", "na", "-", "not provided", "not specified"}
 
+
+def null_if_placeholder(v):
+    """Models sometimes write the TEXT 'null' instead of a real null. Treat those as missing."""
+    if isinstance(v, str) and v.strip().lower() in NULL_WORDS:
+        return None
+    return v
 
 def get_source(info: ValidationInfo) -> str | None:
     """The original document text, passed in by extractor.py so we can cross-check the model."""
@@ -105,13 +112,17 @@ class Invoice(BaseModel):
                 )
         return self
 
-
 # ---------- Resume ----------
 class WorkExperience(BaseModel):
     company: str
     job_title: str
     start_date: str | None = Field(default=None, description="YYYY-MM, or YYYY if month unknown, or null")
     end_date: str | None = Field(default=None, description="YYYY-MM, or YYYY, or 'present' if current, or null")
+
+    @field_validator("start_date", "end_date", mode="before")
+    @classmethod
+    def placeholder_to_none(cls, v):
+        return null_if_placeholder(v)
 
     @field_validator("start_date", "end_date")
     @classmethod
@@ -124,13 +135,31 @@ class WorkExperience(BaseModel):
 class Education(BaseModel):
     institution: str
     degree: str
-    year: str | None = Field(default=None, description="Graduation (END) year as 4 digits, e.g. '2018', or null")
+    year: str | None = Field(
+        default=None,
+        description="Graduation (END) year as 4 digits, e.g. '2018'. null if still studying or no year is written. Never a grade or language level.",
+    )
+
+    @field_validator("year", mode="before")
+    @classmethod
+    def clean_year(cls, v):
+        v = null_if_placeholder(v)
+        if isinstance(v, int):
+            return str(v)
+        if isinstance(v, str):
+            m = re.fullmatch(r"\s*((?:19|20)\d{2})\s*[-–—]\s*((?:19|20)\d{2})\s*", v)
+            if m:
+                return m.group(2)   # "2016-2018" becomes "2018"
+        return v
 
     @field_validator("year")
     @classmethod
     def check_year(cls, v):
         if v is not None and not re.fullmatch(r"\d{4}", v):
-            raise ValueError(f"year '{v}' must be a single 4-digit graduation year, not a range")
+            raise ValueError(
+                f"year '{v}' is not a 4-digit year. Grades (like 5A or 75.09) and language levels "
+                "(like B1) are NOT years. Use null when no graduation year is written."
+            )
         return v
 
 
@@ -142,6 +171,11 @@ class Resume(BaseModel):
     skills: list[str] = Field(description="Individual skills, one short item each")
     experience: list[WorkExperience]
     education: list[Education]
+
+    @field_validator("email", "phone", "location", mode="before")
+    @classmethod
+    def placeholder_to_none(cls, v):
+        return null_if_placeholder(v)
 
     @field_validator("email")
     @classmethod
@@ -163,5 +197,9 @@ class Resume(BaseModel):
             raise ValueError(f"email '{self.email}' does not appear in the text")
         for job in self.experience:
             if job.company.lower() != "freelance" and squash(job.company) not in squashed:
-                raise ValueError(f"Company '{job.company}' does not appear in the text")
+                raise ValueError(
+                    f"Company '{job.company}' does not appear in the text. List only jobs that are "
+                    "actually written in the document. If it lists no jobs, return an empty list "
+                    "for experience. Never copy jobs from the examples."
+                )
         return self
