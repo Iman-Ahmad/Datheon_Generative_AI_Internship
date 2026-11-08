@@ -1,0 +1,9 @@
+# Versions are intentionally not pinned yet.
+# After you have installed and tested everything, run `pip list` and pin the versions you used.
+langchain-core
+langchain-community
+langchain-ollama
+langchain-chroma
+langchain-text-splitters
+chromadb
+pypdf
