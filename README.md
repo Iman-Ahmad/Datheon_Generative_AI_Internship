@@ -65,4 +65,4 @@ Datheon_Generative_AI_Internship/
 
 ## Demo
 
-LinkedIn walkthrough: _link coming soon_
+LinkedIn walkthrough: https://lnkd.in/p/epq-9VeG
